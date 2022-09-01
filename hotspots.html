@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/6b781c3f04.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githubusercontent.com/machasaikumar/360project/main/First"></script>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+.thumb {
+    height: 75px;
+    width: 150px;
+
+}
+
+
+
+#inputId {
+    border-width: 1px;
+}
+
+
+
+.required-class {
+    font-family: roboto;
+    font-size: 13px;
+    color: red;
+
+}
+
+.preview-image {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+#imageDiv {
+    height: 360px;
+    width: 720px;
+}
+
+.temp {
+    display: block;
+}
+
+.uploadButton {
+    height: 40px;
+    width: 150px;
+    background-color: #5bc0de;
+    color: #ffffff;
+    border-radius: 10px;
+    border-width: 0px;
+}
+
+.inputButton {
+    position: relative;
+    overflow: hidden;
+    width: 95px;
+    margin-left: 10px;
+
+}
+
+.show {
+    display: inline;
+}
+
+body {
+    font-family: PT Sans;
+}
+
+#list img {
+    max-width: 200px;
+}
+
+#deleteImgs {
+    display: none;
+}
+
+.button {
+    height: 40px;
+    width: 70px;
+    background-color: blue;
+    color: #ffffff;
+    border-radius: 10px;
+    border-width: 0px;
+}
+
+.sceneClass {
+    height: 420px;
+    width: 700px;
+    margin-left: 20px;
+
+}
+
+@media screen and (max-width:992px) {
+    #imageDiv {
+        height: 300px;
+        width: 400px;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    #list img {
+        max-width: 100px;
+    }
+
+    .thumbDiv {
+        height: 70vh;
+        width: 100px;
+        overflow-y: auto;
+    }
+}
+
+.thumbDiv {
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.trash {
+    margin-top: 3px;
+    font-size: 20px;
+    margin-bottom: 3px;
+    text-align: right;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.edit {
+    margin-left: 3px;
+    color: #696969;
+
+}
+
+.paragraphStyle {
+    margin-left: 8px;
+    font-family: roboto;
+    font-size: 15px;
+    color: black;
+    width: 120px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.heading {
+    font-family: roboto;
+    font-size: 15px;
+}
+
+.bg-container {
+    height: 100vh;
+    width: 100vw;
+}
+
+@media screen and (max-width:576px) {
+    .edit {
+        margin-top: 3px;
+        font-size: 16px;
+        margin-bottom: 3px;
+        text-align: right;
+        margin-left: 3px;
+        color: #696969;
+    }
+
+    #imageDiv {
+        height: 300px;
+        width: 300px;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    #list img {
+        max-width: 100px;
+    }
+
+    .thumbDiv {
+        height: 70vh;
+        width: 100px;
+        overflow-y: auto;
+    }
+
+
+
+    .trash {
+        margin-top: 3px;
+        font-size: 15px;
+        margin-bottom: 3px;
+        text-align: right;
+        color: #ffffff;
+        margin-right: 10px;
+    }
+}
+
+.show {
+    display: inline-block;
+}
+
+.hideScene {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+    <script id="scriptId">
+        AFRAME.registerComponent('world-pos', {
+            init: function() {
+                this.tmpVec = new THREE.Vector3();
+
+            },
+            tick: function() {
+                this.tmpVec.setFromMatrixPosition(this.el.object3D.matrixWorld);
+                let x = this.tmpVec;
+                globalVariable = x;
+                this.el.object3D.getWorldPosition(this.tmpVec);
+            }
+        });
+
+        AFRAME.registerComponent('look-at', {
+            schema: {
+                type: 'selector'
+            },
+            init: function() {},
+            tick: function() {
+                this.el.object3D.lookAt(this.data.object3D.position);
+            }
+        });
+    </script>
+    <div class="m-3">
+        <div class="container">
+            <div class="row">
+                <div class=" col-12 col-md-4">
+                    <input id="inputId" placeholder="Add Your Title Here" type="text" />
+                    <p id="required" class="required-class"></p>
+                </div>
+                <div class="col-12 col-md-4">
+                    <button id="createScene" class="btn btn-primary m-3">Create Scene</button>
+                </div>
+                <div class="col-12 col-md-4">
+                    <button id="deleteScene" class="btn btn-danger m-3">Delete Scene</button>
+                </div>
+                <!-- <button class="btn btn-info" id="buttonIDD">remove Cursor</button>-->
+
+
+            </div>
+        </div>
+    </div>
+    <div id="buttonDiv" class="m-3">
+    </div>
+    <div id="thumbRowDiv" class="d-flex flex-row">
+    </div>
+    <script>
+    let inputIdEl = document.getElementById("inputId");
+let createSceneEl = document.getElementById("createScene");
+let templeteIdEl = document.getElementById("templeteId");
+let buttonDivEl = document.getElementById("buttonDiv");
+let thumbRowDivEl = document.getElementById("thumbRowDiv");
+let requiredEl = document.getElementById("required");
+let deleteSceneEl = document.getElementById("deleteScene");
+let scriptIdEl = document.getElementById("scriptId");
+let registerIdEl = document.getElementById("registerId");
+let i = 0;
+let globalActiveId = null;
+let globalButtonId = null;
+let globalrowDivEl = null;
+let globalImg = null;
+let hotspotlist = [];
+let finalArray = [];
+let thumbivArray = [];
+let buttonArray = [];
+let outerDivArray = [];
+let globalouterDivEl = null;
+let globalButtonEl = null;
+let globalVariable = null;
+let cameraCount = 0;
+let globalCursorEl = null;
+let globalcameraEl = null;
+//let buttonIDDEl = document.getElementById("buttonIDD");
+let buttonID1El = document.getElementById("buttonID1");
+let globalScene = null;
+inputIdEl.addEventListener("blur", function(event) {
+    if (event.target.value === "") {
+        inputIdEl.style.borderColor = "red";
+        requiredEl.textContent = "*Required";
+
+    } else {
+        inputIdEl.style.borderColor = "green";
+        requiredEl.textContent = "";
+    }
+});
+
+createSceneEl.addEventListener("click", function(evt) {
+    // console.log(scriptIdEl);
+    //let extend = extentionArray[i]
+    //console.log(extentionArray[i])
+    let stringRegisterComponent = JSON.stringify(scriptIdEl);
+    let registerString = localStorage.setItem("stringregisterComponent", stringRegisterComponent);
+    let component = localStorage.getItem(registerString);
+    let parsePositions = JSON.parse(component);
+
+    let outerDiv = document.createElement("div");
+    outerDiv.setAttribute("id", "templeteId" + i);
+    outerDivArray.push(outerDiv.id);
+    thumbRowDivEl.appendChild(outerDiv);
+    outerDiv.appendChild(scriptIdEl);
+    globalouterDivEl = outerDiv;
+    let rowDivEl = document.createElement("div");
+    rowDivEl.setAttribute("class", "d-flex flex-row m-3");
+    outerDiv.appendChild(rowDivEl);
+    globalrowDivEl = rowDivEl;
+    let columnDivEl = document.createElement("div");
+    columnDivEl.setAttribute("class", "d-flex flex-column");
+    rowDivEl.appendChild(columnDivEl);
+    i = i + 1;
+    const previewContainer = document.createElement("div");
+    previewContainer.setAttribute("id", "preview-container");
+    columnDivEl.appendChild(previewContainer);
+    let titleDiv = document.createElement("div");
+    titleDiv.setAttribute("class", "d-flex flex-row");
+    columnDivEl.appendChild(titleDiv);
+    let inputparaEl = document.createElement("p");
+    inputparaEl.classList.add("paragraphStyle");
+    inputparaEl.textContent = inputIdEl.value;
+    titleDiv.appendChild(inputparaEl);
+    let editButtonEl = document.createElement("i");
+    editButtonEl.classList.add("fa-solid", "fa-pencil", "edit");
+    editButtonEl.type = "submit";
+    titleDiv.appendChild(editButtonEl);
+    let doneButtonEl = document.createElement("i");
+    doneButtonEl.classList.add("fa-solid", "fa-check", "edit");
+    titleDiv.appendChild(doneButtonEl);
+
+    editButtonEl.addEventListener("click", function() {
+        button0El.textContent = "";
+        inputparaEl.contentEditable = true;
+        inputparaEl.style.color = "black";
+        inputparaEl.style.backgroundColor = "#D3D3D3";
+        inputparaEl.setAttribute('cursor', 'wait');
+        inputparaEl.textContent = "";
+        inputIdEl.textContent = "";
+        globalinputparaEl = inputparaEl;
+    });
+    doneButtonEl.addEventListener("click", function() {
+        inputparaEl.contentEditable = false;
+        inputparaEl.style.backgroundColor = "#ffffff";
+        button0El.textContent = inputparaEl.textContent;
+    });
+
+    let sceneDivEl = document.createElement("div");
+    sceneDivEl.setAttribute("class", "sceneClass");
+    rowDivEl.appendChild(sceneDivEl);
+    thumbivArray.push(outerDiv);
+
+    let sceneEl = document.createElement("a-scene");
+    sceneEl.setAttribute("embedded", true);
+    sceneEl.setAttribute("vr-mode-ui", "enabled: false");
+    sceneEl.setAttribute("id", "scene" + i);
+
+    sceneEl.setAttribute("display", "visible");
+    sceneDivEl.appendChild(sceneEl);
+    globalScene = sceneEl;
+    let skyEl = document.createElement("a-sky");
+    skyEl.setAttribute("id", "tableBannerEl");
+    sceneEl.appendChild(skyEl);
+    let cameraEl = document.createElement("a-camera");
+    cameraEl.setAttribute("id", i);
+    sceneEl.appendChild(cameraEl);
+    globalcameraEl = cameraEl
+    let cursorEl = document.createElement("a-cursor");
+    cursorEl.setAttribute("id", i);
+    cursorEl.setAttribute("height", "2");
+    cursorEl.setAttribute("radius", "2.5");
+    cursorEl.setAttribute("color", "red");
+    cursorEl.setAttribute("raycaster", "objects: .box");
+    cursorEl.setAttribute("world-pos", "null");
+
+
+    globalCursorEl = cursorEl
+    let cameraElId = document.getElementById(cursorEl.id)
+    //cameraElId.setAttribute("world-pos", "null");
+    removeCameraEl = cursorEl.id - 1
+    let sceneIdremove = document.getElementById(removeCameraEl)
+    console.log(sceneIdremove)
+
+
+
+    //console.log(cameraElId)
+    ///console.log(sceneIdremove)
+    cameraElId.appendChild(cursorEl);
+    if (i > 1) {
+        sceneIdremove.setAttribute("visible", "false")
+
+    }
+
+
+
+
+    //let flag = 0
+    // buttonIDDEl.addEventListener("click", function() {
+    //if (flag === 0) {
+    //console.log("hello")
+    //  globalcameraEl.removeChild(globalCursorEl);
+    //cameraEl.removeChild(cursorEl);
+    // console.log(sceneEl)
+    //flag = flag + 1;
+    // }
+    //globalcameraEl.removeChild(globalCursorEl);
+
+
+    //})
+    cameraCount = cameraCount + 1
+    const imageTypeFilter = /image.*/;
+    const fileInput = document.createElement("input");
+    fileInput.setAttribute("class", "inputButton ");
+    fileInput.type = "file";
+    columnDivEl.appendChild(fileInput);
+    let count = 0;
+
+    function generateImagePreview(file) {
+        count = count + 1;
+        let array = [];
+        const fileReader = new FileReader();
+        fileReader.addEventListener('load', event => {
+            // generate an image preview
+            let image = document.createElement('img');
+            globalImg = image;
+            image.classList.add('preview-image');
+            let srcAttr = document.createAttribute('src');
+            srcAttr.value = fileReader.result;
+            image.setAttributeNode(srcAttr);
+            globalImg = image.src;
+            skyEl.setAttribute("src", globalImg);
+            array.push(globalImg)
+            console.log(array)
+            previewContainer.append(image);
+        }, false);
+        // open and read the file
+        fileReader.readAsDataURL(file);
+    }
+
+    function processFiles(files) {
+        previewContainer.innerHTML = "";
+        ([...files]).forEach((file, index) => {
+            if (!file.type.match(imageTypeFilter)) {
+                console.error("Incorrect file type:");
+                console.log(file);
+            } else {
+                generateImagePreview(file);
+            }
+        });
+    }
+    fileInput.addEventListener('change', event => {
+        processFiles(event.target.files);
+    });
+    let hotspotButtonEl = document.createElement("button");
+    hotspotButtonEl.setAttribute("class", "btn btn-primary m-2");
+    hotspotButtonEl.textContent = "Create Hotspot";
+    columnDivEl.appendChild(hotspotButtonEl);
+    let deleteButtonEl = document.createElement("button");
+    deleteButtonEl.setAttribute("class", "btn btn-danger m-2");
+    deleteButtonEl.textContent = "Delete Hotspot";
+    columnDivEl.appendChild(deleteButtonEl);
+    for (let i = 0; i < thumbivArray.length; i++) {
+        thumbivArray[i].style.display = "none";
+    }
+    for (let i = 0; i < buttonArray.length; i++) {
+        buttonArray[i].className = buttonArray[i].className.replace(" active", "");
+    }
+    document.getElementById(outerDiv.id).style.display = "block";
+    evt.currentTarget.className += " active";
+    let positions = 0
+    hotspotButtonEl.addEventListener("click", function() {
+        let imageEl = document.createElement("a-image");
+        localStorage.setItem(positions, JSON.stringify(globalVariable))
+        let localPositions = localStorage.getItem(positions)
+        let parsePositions = JSON.parse(localPositions)
+        //console.log(parsePositions)
+        hotspotlist.push(parsePositions)
+        //console.log(hotspotlist)
+        finalArray.push(parsePositions)
+        //console.log(finalArray)
+        imageEl.setAttribute('position', parsePositions);
+        // console.log(hotspotlist[hotspotlist[hotspotlist.length - 1]])
+        //console.log(hotspotlist)
+        imageEl.setAttribute('height', 0.1);
+        imageEl.setAttribute('id', 'userInput' + positions);
+        imageId = imageEl.id;
+        imageEl.setAttribute('width', 0.1);
+        imageEl.setAttribute('look-at', '#camera');
+        imageEl.setAttribute('src', "https://cdn.glitch.me/2087dfa6-bd02-4451-a189-36095a66f386%2Fup-arrow.png");
+        sceneEl.appendChild(imageEl);
+        positions = positions + 1
+        cylenderGlobal = imageEl;
+        //console.log(sceneEl)
+    });
+    let button0El = document.createElement("button");
+    button0El.setAttribute("class", "btn , btn-primary m-2");
+    button0El.textContent = inputIdEl.value;
+    buttonDivEl.appendChild(button0El);
+    buttonArray.push(button0El)
+    button0El.setAttribute("id", i - 1)
+
+
+    button0El.addEventListener("click", function(evt) {
+        let tabIDEl = button0El.id
+
+        // globalcameraEl.removeChild(cursorEl)
+        //cursorEl.setAttribute("visible", "true")
+        //globalcameraEl.setAttribute("visible", "false")
+        //console.log(cursorEl)
+
+        for (let i = 0; i < thumbivArray.length; i++) {
+            thumbivArray[i].style.display = "none";
+        }
+        for (let i = 0; i < buttonArray.length; i++) {
+
+            buttonArray[i].className = buttonArray[i].className.replace(" active", "");
+            buttonId = button0El
+            globalButtonId = buttonId
+        }
+        document.getElementById(outerDiv.id).style.display = "block";
+        evt.currentTarget.className += " active";
+        let activeId = outerDiv
+        globalActiveId = activeId
+
+        deleteSceneEl.addEventListener("click", function(evt) {
+            for (let i = 0; i < thumbivArray.length; i++) {
+                thumbivArray[i].style.display = "none";
+            }
+            for (let i = 0; i < buttonArray.length; i++) {
+
+                buttonArray[i].className = buttonArray[i].className.replace(" active", "");
+
+            }
+
+            if (button0El.id == 0) {
+                document.getElementById(outerDivArray[parseInt(button0El.id) + parseInt(1)]).style.display = "block";
+                //outerDivArray.splice(0, 1)
+                //console.log(outerDivArray)
+
+            } else {
+                document.getElementById(outerDivArray[parseInt(button0El.id) - parseInt(1)]).style.display = "block";
+                // outerDivArray.splice(button0El.id, 1)
+                //console.log(outerDivArray)
+                // console.log(button0El.id)
+
+
+            }
+            // console.log(globalouterDivEl.id)
+            //console.log(outerDivArray)
+            globalActiveId.remove(globalrowDivEl);
+            globalButtonId.remove(buttonDivEl);
+
+            //buttonDivEl.appendChild(button0El);
+            // $(outerDiv).show(scene01);
+        })
+
+    });
+
+    inputIdEl.value = ""
+    console.log(outerDiv)
+});
+</script>
+</body>
+
+</html>
